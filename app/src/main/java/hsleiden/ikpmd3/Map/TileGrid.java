@@ -1,46 +1,43 @@
 package hsleiden.ikpmd3.Map;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-
-import java.util.ArrayList;
 
 public class TileGrid {
 
 	private int rows = 10;
 	private int columns = 60;
 
-	private ArrayList<Tile> tiles = new ArrayList<>();
+	private Tile[][] tiles = new Tile[rows][columns];
 
-	private Bitmap images;
+	private int[][] map;
 
-	public TileGrid(Bitmap images)
+	public TileGrid(int[][] map)
 	{
-		this.images = images;
-
+		this.map = map;
 		createTiles();
 	}
 
 	private void createTiles()
 	{
-		for(int i = 0 ; i < 10 ; i ++)
+		for(int row = 0 ; row < tiles.length ; row++)
 		{
-			tiles.add(new Tile(64 * i, 64, images));
+			for (int column = 0 ; column < tiles.length ; column++)
+			{
+				tiles[row][column] = new Tile(64 * column, 64 * row, );
+			}
 		}
-
-		tiles.add(new Tile(64 * 4, 64 * 4, images));
-		tiles.add(new Tile(64 * 5, 64 * 4, images));
-		tiles.add(new Tile(64 * 5, 64 * 5, images));
-		tiles.add(new Tile(64 * 5, 64 * 6, images));
 	}
 
 	public void draw(Canvas canvas)
 	{
-		for(Tile tile : tiles)
+		for(Tile[] tilesArray : tiles)
 		{
-			if(tile != null)
-				canvas.drawBitmap(tile.getImage(), tile.getX(), tile.getY(), null);
+			for (Tile tile : tilesArray)
+			{
+				if(tile != null)
+					canvas.drawBitmap(tile.getImage(), tile.getX(), tile.getY(), null);
+			}
 		}
 	}
 
