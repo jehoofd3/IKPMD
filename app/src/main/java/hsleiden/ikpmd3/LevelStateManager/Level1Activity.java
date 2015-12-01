@@ -8,6 +8,7 @@ import android.view.SurfaceView;
 
 import hsleiden.ikpmd3.Background.Background;
 import hsleiden.ikpmd3.Boot.Boot;
+import hsleiden.ikpmd3.Helpers.Artist;
 import hsleiden.ikpmd3.Map.TileGrid;
 import hsleiden.ikpmd3.R;
 
@@ -73,6 +74,7 @@ public class Level1Activity extends SurfaceView implements SurfaceHolder.Callbac
 	@Override
 	public void draw(Canvas canvas)
 	{
+
 		super.draw(canvas);
 		final float scaleFactorX = getWidth()/(WIDTH*1.f);
 		final float scaleFactorY = getHeight()/(HEIGHT*1.f);

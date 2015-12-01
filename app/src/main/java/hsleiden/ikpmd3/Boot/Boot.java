@@ -15,9 +15,7 @@ public class Boot extends Thread
 
     public Boot(SurfaceHolder surfaceHolder, SurfaceView gamePanel)
     {
-        super();
-        this.surfaceHolder = surfaceHolder;
-        this.gamePanel = gamePanel;
+
     }
     @Override
     public void run()

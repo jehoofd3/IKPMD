@@ -3,6 +3,8 @@ package hsleiden.ikpmd3.Map;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import hsleiden.ikpmd3.Helpers.Artist;
+
 public class TileGrid {
 
 	private int rows = 10;
