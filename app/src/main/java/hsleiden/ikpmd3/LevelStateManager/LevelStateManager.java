@@ -2,8 +2,6 @@ package hsleiden.ikpmd3.LevelStateManager;
 
 import android.graphics.Canvas;
 
-import java.util.Stack;
-
 public class LevelStateManager
 {
 
@@ -11,7 +9,6 @@ public class LevelStateManager
 
     public LevelStateManager()
     {
-        //this.level = new MenuState();
     }
 
     public void update()
@@ -19,9 +16,9 @@ public class LevelStateManager
         level.update();
     }
 
-    public void draw(Canvas canvas)
+    public void draw()
     {
-        level.draw(canvas);
+        level.draw();
     }
 
     public void setLevel(LevelState level)

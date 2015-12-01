@@ -5,7 +5,8 @@ import android.graphics.Canvas;
 
 import hsleiden.ikpmd3.LevelStateManager.LevelState;
 
-public class Background implements LevelState {
+public class Background
+{
 
 	private Bitmap image;
 
@@ -16,7 +17,6 @@ public class Background implements LevelState {
 
 	public void update()
 	{
-
 	}
 
 	public void draw(Canvas canvas)
