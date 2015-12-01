@@ -6,9 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-
-import hsleiden.ikpmd3.Boot.Boot;
-import hsleiden.ikpmd3.LevelStateManager.Level1Activity;
 import hsleiden.ikpmd3.R;
 
 public class MainActivity extends Activity {

@@ -6,7 +6,8 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 
-public class TileGrid {
+public class TileGrid
+{
 
 	private int rows = 10;
 	private int columns = 60;
