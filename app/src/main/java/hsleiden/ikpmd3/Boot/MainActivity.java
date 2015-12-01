@@ -1,4 +1,4 @@
-package hsleiden.ikpmd3;
+package hsleiden.ikpmd3.Boot;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,9 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+import hsleiden.ikpmd3.Boot.Boot;
 import hsleiden.ikpmd3.LevelStateManager.Level1Activity;
+import hsleiden.ikpmd3.R;
 
 public class MainActivity extends Activity {
 
@@ -21,7 +23,7 @@ public class MainActivity extends Activity {
 		//set to full screen
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		setContentView(new Level1Activity(this));
+		setContentView(new Boot(this));
 	}
 
 	@Override

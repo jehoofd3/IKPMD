@@ -36,12 +36,14 @@ public class Boot extends Thread
             //try locking the canvas for pixel editing
             try {
                 canvas = this.surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder) {
+                synchronized (surfaceHolder)
+                {
                     this.gamePanel.draw(canvas);
                 }
-            } catch (Exception e) {
+            } catch (Exception e){
             }
-            finally{
+            finally
+            {
                 if(canvas!=null)
                 {
                     try {

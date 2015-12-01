@@ -1,23 +1,15 @@
 package hsleiden.ikpmd3.Helpers;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.view.Window;
-
 public class Artist {
+    private static Artist ourInstance = new Artist();
 
-	private int width = 960;
-	private int height = 768;
+    public static Artist getInstance()
+    {
+        return ourInstance;
+    }
 
-	public Canvas canvas;
+    private Artist()
+    {
 
-	public Artist(Canvas canvas)
-	{
-		this.canvas = canvas;
-	}
-
-	public static void draw_image(int x, int y, Bitmap image)
-	{
-
-	}
+    }
 }
