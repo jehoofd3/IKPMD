@@ -7,7 +7,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import hsleiden.ikpmd3.Background.Background;
+<<<<<<< Updated upstream
 import hsleiden.ikpmd3.Boot.Boot;
+=======
+>>>>>>> Stashed changes
 import hsleiden.ikpmd3.Map.TileGrid;
 import hsleiden.ikpmd3.R;
 

@@ -1,10 +1,17 @@
 package hsleiden.ikpmd3.LevelStateManager;
 
-import android.graphics.Canvas;
+import android.content.Context;
+import android.view.SurfaceView;
 
-public interface LevelState
+public abstract class LevelState extends SurfaceView
 {
+<<<<<<< Updated upstream
 	void draw();
+=======
+	public LevelState(Context context)
+	{
+		super(context);
+	}
+>>>>>>> Stashed changes
 
-	void update();
 }

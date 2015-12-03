@@ -1,16 +1,30 @@
 package hsleiden.ikpmd3.Boot;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+<<<<<<< Updated upstream
+=======
+
+import hsleiden.ikpmd3.Helpers.DatabaseInfo;
+import hsleiden.ikpmd3.Helpers.DatabaseReceiver;
+import hsleiden.ikpmd3.LevelStateManager.Level1Activity;
+import hsleiden.ikpmd3.LevelStateManager.LevelState;
+import hsleiden.ikpmd3.LevelStateManager.LevelStateManager;
+>>>>>>> Stashed changes
 import hsleiden.ikpmd3.R;
 
 public class MainActivity extends Activity
 {
+<<<<<<< Updated upstream
 	private Boot2 boot;
+=======
+>>>>>>> Stashed changes
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +36,15 @@ public class MainActivity extends Activity
 		//set to full screen
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+<<<<<<< Updated upstream
 		boot = new Boot2(this);
 		
 		setContentView(boot);
+=======
+		DatabaseReceiver databaseReceiver = DatabaseReceiver.getDatabaseReceiver(this);
+		databaseReceiver.insertImage("test_tile", DatabaseInfo.MapImages.TABLE_NAME);
+		LevelStateManager lsm = new LevelStateManager(this);
+>>>>>>> Stashed changes
 	}
 
 	@Override

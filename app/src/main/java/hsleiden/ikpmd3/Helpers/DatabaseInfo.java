@@ -1,41 +1,41 @@
 package hsleiden.ikpmd3.Helpers;
 
-public class DatabaseInfo {
+import android.provider.BaseColumns;
 
-	public class AccountTable {
-		public static final String ACCOUNT = "account";
+public final class DatabaseInfo {
+	// To prevent someone from accidentally instantiating the contract class,
+	// give it an empty constructor.
+	public DatabaseInfo() {}
+
+	public static abstract class Account implements BaseColumns {
+		public static final String TABLE_NAME = "account";
+		public static final String COLUMN_NAME_ID = "id";
+		public static final String COLUMN_NAME_NAME = "name";
 	}
 
-	public class AccountColumn {
-		public static final String NAME = "naam";
-		public static final String ID = "id";
+	public static abstract class Timer implements BaseColumns {
+		public static final String TABLE_NAME = "timer";
+		public static final String COLUMN_NAME_LEVEL = "level";
+		public static final String COLUMN_NAME_TIME = "time";
+		public static final String COLUMN_NAME_ACCOUNTID = "account_id";
+
 	}
 
-	public class TimerTable {
-		public static final String TIMER = "timer";
+	public static abstract class MapImages implements BaseColumns {
+		public static final String TABLE_NAME = "map_images";
+		public static final String COLUMN_NAME_IMAGE_NAME = "image_name";
+		public static final String COLUMN_NAME_IMAGE = "image";
 	}
 
-	public class TimerColumn {
-		public static final String LEVEL = "level";
-		public static final String TIME = "tijd";
-		public static final String ACCOUNTID = "account_id";
+	public static abstract class MenuImages implements BaseColumns {
+		public static final String TABLE_NAME = "menu_images";
+		public static final String COLUMN_NAME_IMAGE_NAME = "image_name";
+		public static final String COLUMN_NAME_IMAGE = "image";
 	}
 
-	public class MapImageTable {
-		public static final String MAPIMAGES = "map_images";
+	public static abstract class PlayerImages implements BaseColumns {
+		public static final String TABLE_NAME = "player_images";
+		public static final String COLUMN_NAME_IMAGE_NAME = "image_name";
+		public static final String COLUMN_NAME_IMAGE = "image";
 	}
-
-	public class MenuImageTable {
-		public static final String MENUIMAGES = "menu_images";
-	}
-
-	public class PlayerImageTable {
-		public static final String PLAYERIMAGES = "player_images";
-	}
-
-	public class ImageColumn {
-		public static final String IMAGENAME = "image_name";
-		public static final String IMAGE = "image";
-	}
-
 }

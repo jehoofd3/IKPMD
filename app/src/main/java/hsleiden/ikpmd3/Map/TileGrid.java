@@ -1,10 +1,15 @@
 package hsleiden.ikpmd3.Map;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+<<<<<<< Updated upstream
 public class TileGrid
 {
+=======
+import hsleiden.ikpmd3.Helpers.Artist;
+
+public class TileGrid {
+>>>>>>> Stashed changes
 	private int rows = 10;
 	private int columns = 60;
 
