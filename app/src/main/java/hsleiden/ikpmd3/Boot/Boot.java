@@ -6,12 +6,9 @@ import android.view.SurfaceView;
 
 public class Boot extends Thread
 {
-    private int FPS = 30;
-    private double averageFPS;
+    /**
     private SurfaceHolder surfaceHolder;
     private SurfaceView gamePanel;
-    private boolean running;
-    public static Canvas canvas;
 
     public Boot(SurfaceHolder surfaceHolder, SurfaceView gamePanel)
     {
@@ -27,7 +24,8 @@ public class Boot extends Thread
         int frameCount =0;
         long targetTime = 1000 / FPS;
 
-        while(running) {
+        while(running)
+        {
             startTime = System.nanoTime();
             canvas = null;
 
@@ -73,4 +71,5 @@ public class Boot extends Thread
     {
         running = isRunning;
     }
+    */
 }

@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 
 public interface LevelState
 {
-	void draw(Canvas canvas);
+	void draw();
 
 	void update();
 }

@@ -1,6 +1,6 @@
 package hsleiden.ikpmd3.Helpers;
 
-public class Artist extends Th {
+public class Artist {
     private static Artist ourInstance = new Artist();
 
     public static Artist getInstance()

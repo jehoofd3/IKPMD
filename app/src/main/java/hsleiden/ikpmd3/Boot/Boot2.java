@@ -1,74 +1,34 @@
 package hsleiden.ikpmd3.Boot;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class Boot2 extends Thread
+import hsleiden.ikpmd3.Helpers.Artist;
+import hsleiden.ikpmd3.LevelStateManager.Level1Activity;
+import hsleiden.ikpmd3.LevelStateManager.LevelStateManager;
+
+public class Boot2 extends SurfaceView
 {
-    private int FPS = 30;
-    private double averageFPS;
-    private SurfaceHolder surfaceHolder;
-    private SurfaceView gamePanel;
     private boolean running;
-    public static Canvas canvas;
 
-    public Boot2(SurfaceHolder surfaceHolder, SurfaceView gamePanel)
+    private LevelStateManager lsm;
+
+    public Boot2(Context context)
     {
-        super();
-        this.surfaceHolder = surfaceHolder;
-        this.gamePanel = gamePanel;
-    }
-    @Override
-    public void run()
-    {
-        long startTime;
-        long timeMillis;
-        long waitTime;
-        long totalTime = 0;
-        int frameCount =0;
-        long targetTime = 1000 / FPS;
+        super(context);
+        this.running = true;
 
-        while(running) {
-            startTime = System.nanoTime();
-            canvas = null;
+        // LevelStateManager initialiseren
+        this.lsm = new LevelStateManager();
+        this.lsm.setLevel(new Level1Activity(context));
 
-            //try locking the canvas for pixel editing
-            try {
-                canvas = this.surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder)
-                {
-                    this.gamePanel.draw(canvas);
-                }
-            } catch (Exception e){
-            }
-            finally
-            {
-                if(canvas!=null)
-                {
-                    try {
-                        surfaceHolder.unlockCanvasAndPost(canvas);
-                    }
-                    catch(Exception e){e.printStackTrace();}
-                }
-            }
 
-            timeMillis = (System.nanoTime() - startTime) / 1000000;
-            waitTime = targetTime-timeMillis;
-
-            try{
-                this.sleep(waitTime);
-            }catch(Exception e){}
-
-            totalTime += System.nanoTime()-startTime;
-            frameCount++;
-            if(frameCount == FPS)
-            {
-                averageFPS = 1000/((totalTime/frameCount)/1000000);
-                frameCount =0;
-                totalTime = 0;
-                System.out.println(averageFPS);
-            }
+        while(running)
+        {
+            lsm.update();
+            lsm.draw();
         }
     }
     public void setRunning(boolean isRunning)
