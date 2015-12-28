@@ -19,7 +19,7 @@ public class Tile {
 		this.image = image;
 	}
 
-	public void moveTileLeft(int xToMove)
+	public void moveTileLeft(float xToMove)
 	{
 		this.x -= xToMove;
 	}

@@ -23,7 +23,7 @@ public class Camera {
 	 * This method moves all the tiles on their x-as.
 	 * @param xToMove The x units to move.
 	 */
-	public void moveTiles(int xToMove)
+	public void moveTiles(float xToMove)
 	{
 		for(Tile tile : tiles)
 		{

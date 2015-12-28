@@ -2,12 +2,12 @@ package hsleiden.ikpmd3.levelStateManager;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
 import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.background.Background;
+import hsleiden.ikpmd3.helpers.Collider;
 import hsleiden.ikpmd3.levelLoader.LevelLoader;
 import hsleiden.ikpmd3.map.TileGrid;
 import hsleiden.ikpmd3.player.Camera;
@@ -31,6 +31,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	private TileGrid tileGrid;
 	private Player player;
 	private Camera camera;
+	private Collider collider;
 
 	private ActivityLoop activityLoop;
 	private Context context;
@@ -59,8 +60,9 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		int[][] map = levelLoader.loadLevel("Level1.txt");
 		tileGrid = new TileGrid(context, WIDTH, map);
 
-		player = new Player();
+		player = new Player(100, 100, BitmapFactory.decodeResource(getResources(),R.drawable.a));
 		camera = new Camera(tileGrid.getTiles());
+		collider = new Collider(player, tileGrid.getTiles());
 
 		// The scale factors are used to scale the canvas.
 		// This is the mobiles width / the width of the game service.
@@ -72,17 +74,12 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		activityLoop.start();
 	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		Log.d("filter1", "hi");
-
-		return super.onTouchEvent(event);
-	}
-
 	public void update()
 	{
 		camera.moveTiles(player.getPlayerSpeed());
+		player.update();
+
+		collider.update();
 	}
 
 	public void draw(Canvas canvas)
@@ -101,6 +98,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 
 			background.draw(canvas);
 			tileGrid.draw(canvas);
+			player.draw(canvas);
 
 			canvas.restoreToCount(savedState);
 		}
@@ -117,4 +115,15 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder){}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event)
+	{
+		if (event.getAction() == android.view.MotionEvent.ACTION_DOWN)
+		{
+			player.touchInput = true;
+		}
+
+		return super.onTouchEvent(event);
+	}
 }
