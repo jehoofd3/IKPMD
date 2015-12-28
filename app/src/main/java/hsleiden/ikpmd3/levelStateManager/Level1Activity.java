@@ -2,6 +2,8 @@ package hsleiden.ikpmd3.levelStateManager;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
 import hsleiden.ikpmd3.R;
@@ -68,6 +70,14 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		//we can safely start the game loop
 		activityLoop.setRunning(true);
 		activityLoop.start();
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event)
+	{
+		Log.d("filter1", "hi");
+
+		return super.onTouchEvent(event);
 	}
 
 	public void update()

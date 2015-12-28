@@ -37,7 +37,7 @@ public class LevelStateManager
 		activityLoop.run();
 	}
 
-	public  void setLevel(LevelState level)
+	public void setLevel(LevelState level)
 	{
 		this.level = level;
 		runLevel();

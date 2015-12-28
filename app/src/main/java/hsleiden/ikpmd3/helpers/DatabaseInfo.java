@@ -25,22 +25,4 @@ public final class DatabaseInfo {
 		public static final String COLUMN_NAME_ACCOUNTID = "account_id";
 
 	}
-
-	public static abstract class MapImages implements BaseColumns {
-		public static final String TABLE_NAME = "map_images";
-		public static final String COLUMN_NAME_IMAGE_NAME = "image_name";
-		public static final String COLUMN_NAME_IMAGE = "image";
-	}
-
-	public static abstract class MenuImages implements BaseColumns {
-		public static final String TABLE_NAME = "menu_images";
-		public static final String COLUMN_NAME_IMAGE_NAME = "image_name";
-		public static final String COLUMN_NAME_IMAGE = "image";
-	}
-
-	public static abstract class PlayerImages implements BaseColumns {
-		public static final String TABLE_NAME = "player_images";
-		public static final String COLUMN_NAME_IMAGE_NAME = "image_name";
-		public static final String COLUMN_NAME_IMAGE = "image";
-	}
 }

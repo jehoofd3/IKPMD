@@ -52,22 +52,6 @@ public class DatabaseReceiver extends SQLiteOpenHelper {
 						DatabaseInfo.Timer.COLUMN_NAME_ACCOUNTID + " INTEGER ," +
 						"FOREIGN KEY(" + DatabaseInfo.Timer.COLUMN_NAME_ACCOUNTID +") REFERENCES " + DatabaseInfo.Account.TABLE_NAME + " (" + DatabaseInfo.Account.COLUMN_NAME_ID + ") );"
 		);
-
-		db.execSQL("CREATE TABLE " + DatabaseInfo.MapImages.TABLE_NAME + " (" +
-						DatabaseInfo.MapImages.COLUMN_NAME_IMAGE_NAME + " TEXT , " +
-						DatabaseInfo.MapImages.COLUMN_NAME_IMAGE + " BLOB );"
-		);
-
-		db.execSQL("CREATE TABLE " + DatabaseInfo.MenuImages.TABLE_NAME + " (" +
-						DatabaseInfo.MenuImages.COLUMN_NAME_IMAGE_NAME + " TEXT , " +
-						DatabaseInfo.MenuImages.COLUMN_NAME_IMAGE + " BLOB );"
-		);
-
-		db.execSQL("CREATE TABLE " + DatabaseInfo.PlayerImages.TABLE_NAME + " (" +
-						DatabaseInfo.PlayerImages.COLUMN_NAME_IMAGE_NAME + " TEXT , " +
-						DatabaseInfo.PlayerImages.COLUMN_NAME_IMAGE + " BLOB );"
-		);
-
 	}
 
 	/**
@@ -80,10 +64,6 @@ public class DatabaseReceiver extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("DROP TABLE IF EXISTS "+ DatabaseInfo.Account.TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS "+ DatabaseInfo.Timer.TABLE_NAME);
-		db.execSQL("DROP TABLE IF EXISTS "+ DatabaseInfo.MapImages.TABLE_NAME);
-		db.execSQL("DROP TABLE IF EXISTS "+ DatabaseInfo.MenuImages.TABLE_NAME);
-		db.execSQL("DROP TABLE IF EXISTS "+ DatabaseInfo.PlayerImages.TABLE_NAME);
-
 		onCreate(db);
 	}
 
