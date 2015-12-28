@@ -16,7 +16,7 @@ public class Player {
 	public void update()
 	{
 
-	}//
+	}///
 
 	public void draw(Canvas canvas)
 	{
