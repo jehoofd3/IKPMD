@@ -119,7 +119,10 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	@Override
 	public boolean onTouchEvent(MotionEvent event)
 	{
-		player.touchInput = true;
+		if (event.getAction() == android.view.MotionEvent.ACTION_DOWN)
+		{
+			player.touchInput = true;
+		}
 
 		return super.onTouchEvent(event);
 	}

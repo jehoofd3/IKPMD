@@ -6,7 +6,8 @@ package hsleiden.ikpmd3.utility;
  * @author Richard Jongenburger
  */
 
-public class Configuration {
+public class Configuration
+{
 
 	// Rows, Columns of the map.
 	public final static int ROWS = 7;
