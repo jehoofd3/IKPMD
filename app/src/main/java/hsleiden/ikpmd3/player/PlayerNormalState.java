@@ -9,6 +9,10 @@ public class PlayerNormalState extends PlayerState
     public PlayerNormalState(Player player)
     {
         super(player);
+
+        player.x = player.startX;
+        player.y = player.startY;
+        player.ySpeed = 0;
     }
 
     public void update()

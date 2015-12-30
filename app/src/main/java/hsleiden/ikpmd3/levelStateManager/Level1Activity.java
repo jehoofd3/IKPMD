@@ -1,11 +1,12 @@
 package hsleiden.ikpmd3.levelStateManager;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
-
 import hsleiden.ikpmd3.R;
+import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.background.Background;
 import hsleiden.ikpmd3.helpers.Collider;
 import hsleiden.ikpmd3.levelLoader.LevelLoader;
@@ -60,9 +61,16 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		int[][] map = levelLoader.loadLevel("Level1.txt");
 		tileGrid = new TileGrid(context, WIDTH, map);
 
-		player = new Player(100, 100, BitmapFactory.decodeResource(getResources(),R.drawable.a));
+		Bitmap[] healthImages = new Bitmap[3];
+		healthImages[0] = BitmapFactory.decodeResource(getResources(),R.drawable.health_1);
+		healthImages[1] = BitmapFactory.decodeResource(getResources(),R.drawable.health_2);
+		healthImages[2] = BitmapFactory.decodeResource(getResources(),R.drawable.health_3);
+
+		player = new Player(100, 100, 3, BitmapFactory.decodeResource(getResources(),R.drawable.a), healthImages);
 		camera = new Camera(tileGrid.getTiles());
 		collider = new Collider(player, tileGrid.getTiles());
+		Timer timer = new Timer();
+		timer.start();
 
 		// The scale factors are used to scale the canvas.
 		// This is the mobiles width / the width of the game service.
