@@ -2,10 +2,16 @@ package hsleiden.ikpmd3.boot;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -40,6 +46,9 @@ public class MainActivity extends Activity {
 
 		// Create a new level state manager that handels the levels.
 		new LevelStateManager(this);
+
+		//View view = new MyView(this);
+		//setContentView(view);
 	}
 
 	@Override
@@ -71,6 +80,26 @@ public class MainActivity extends Activity {
 	{
 		return context;
 	}
+
+
 }
+
+class MyView extends View
+{
+
+	public MyView(Context context) {
+		super(context);
+
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		super.onDraw(canvas);
+		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.background), 0, 0, null);
+	}
+
+}
+
 
 

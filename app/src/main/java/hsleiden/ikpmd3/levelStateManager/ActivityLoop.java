@@ -1,7 +1,11 @@
 package hsleiden.ikpmd3.levelStateManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.SurfaceHolder;
 
+import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.helpers.Clock;
 
 /**
@@ -23,9 +27,13 @@ public class ActivityLoop extends Thread
     private boolean running = false;
     private boolean canvasLocked;
 
+    private Bitmap bitmap;
+
     public ActivityLoop()
     {
         super();
+
+
     }
 
     @Override
@@ -39,6 +47,9 @@ public class ActivityLoop extends Thread
                     canvasLocked = true;
                     synchronized (this.surfaceHolder) {
                         Clock.update();
+
+
+
                         canvas.save();
                         level.update();
                         level.draw(canvas);
@@ -52,6 +63,11 @@ public class ActivityLoop extends Thread
                 }
             }
         }
+    }
+
+    public void setBitmap(Bitmap bitmap)
+    {
+        this.bitmap = bitmap;
     }
 
     public void setRunning(boolean isRunning)

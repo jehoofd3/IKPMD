@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 /**
- * This class creates and draws a background.
+ * This class draws a background.
  *
  * @author Richard Jongenburger
  */
