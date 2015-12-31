@@ -1,10 +1,9 @@
 package hsleiden.ikpmd3.player;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.view.MotionEvent;
-
-import hsleiden.ikpmd3.animation.Animation;
 import hsleiden.ikpmd3.helpers.Clock;
+import hsleiden.ikpmd3.utility.Configuration;
+import hsleiden.ikpmd3.animation.Animation;
 
 /**
  *
@@ -14,22 +13,29 @@ import hsleiden.ikpmd3.helpers.Clock;
 public class Player
 {
 
-	public int x, y;
+	public int x, y, startX, startY, health;
 	public Bitmap spriteSheet;
-	public float xSpeed = 20, ySpeed = 0;
+	public Bitmap[] healthImages;
+	public float xSpeed, ySpeed;
 	public boolean touchInput;
 
-	private Animation animation = new Animation();
-
-	public PlayerState playerState;
+	public PlayerState state;
 
 
-	public Player(int x, int y, Bitmap spriteSheet, int numFrames)
+	public Player(int x, int y, int health, Bitmap spriteSheet, Bitmap[] healthImages)
 	{
 		this.x = x;
 		this.y = y;
+		this.startX = x;
+		this.startY = y;
+		this.health = health;
 		this.spriteSheet = spriteSheet;
+		this.healthImages = healthImages;
 
+		this.xSpeed = 20;
+		this.ySpeed = 0;
+
+		state = new PlayerNormalState(this);
 		Bitmap[] image = new Bitmap[numFrames];
 
 		for(int i = 0 ; i < image.length ; i++)
@@ -46,18 +52,21 @@ public class Player
 	public void update()
 	{
 		animation.update();
-
-		playerState.update();
-
+		state.update();
+		
 		if(touchInput)
 		{
 			touchInput = false;
 		}
-
 	}
 
 	public void draw(Canvas canvas)
 	{
+		canvas.drawBitmap(image, x, y, null);
+
+		try {
+			canvas.drawBitmap(healthImages[health - 1], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
+		} catch (ArrayIndexOutOfBoundsException e) {}
 		canvas.drawBitmap(animation.getImage(), x, y, null);
 	}
 
@@ -69,7 +78,10 @@ public class Player
 
 	public void kill()
 	{
-		playerState = new PlayerDieState(this);
+		if(!(state instanceof PlayerDieState))
+		{
+			state = new PlayerDieState(this);
+		}
 	}
 
 	public int getX()
