@@ -1,6 +1,10 @@
 package hsleiden.ikpmd3.animation;
 import android.graphics.Bitmap;
 
+/**
+ * @author Internet
+ */
+
 public class Animation {
     private Bitmap[] frames;
     private int currentFrame;

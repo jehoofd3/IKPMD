@@ -21,8 +21,10 @@ public class Player
 
 	public PlayerState state;
 
+	private Animation animation = new Animation();
 
-	public Player(int x, int y, int health, Bitmap spriteSheet, Bitmap[] healthImages)
+
+	public Player(int x, int y, int health, Bitmap spriteSheet, int numFrames, Bitmap[] healthImages)
 	{
 		this.x = x;
 		this.y = y;
@@ -36,17 +38,16 @@ public class Player
 		this.ySpeed = 0;
 
 		state = new PlayerNormalState(this);
+
 		Bitmap[] image = new Bitmap[numFrames];
 
 		for(int i = 0 ; i < image.length ; i++)
 		{
-			image[i] = Bitmap.createBitmap(spriteSheet, 0, i * 512, 512, 512);
+			image[i] = Bitmap.createBitmap(spriteSheet, 0, i * 256, 256, 256);
 		}
 
 		animation.setFrames(image);
 		animation.setDelay(60);
-
-		playerState = new PlayerNormalState(this);
 	}
 
 	public void update()
@@ -62,12 +63,11 @@ public class Player
 
 	public void draw(Canvas canvas)
 	{
-		canvas.drawBitmap(image, x, y, null);
+		canvas.drawBitmap(animation.getImage(), x, y, null);
 
 		try {
 			canvas.drawBitmap(healthImages[health - 1], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
 		} catch (ArrayIndexOutOfBoundsException e) {}
-		canvas.drawBitmap(animation.getImage(), x, y, null);
 	}
 
 	public float getPlayerSpeed()

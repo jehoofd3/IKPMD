@@ -1,11 +1,13 @@
 package hsleiden.ikpmd3.levelStateManager;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
 import hsleiden.ikpmd3.R;
+import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.background.Background;
 import hsleiden.ikpmd3.helpers.Collider;
 import hsleiden.ikpmd3.levelLoader.LevelLoader;
@@ -65,7 +67,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		healthImages[1] = BitmapFactory.decodeResource(getResources(),R.drawable.health_2);
 		healthImages[2] = BitmapFactory.decodeResource(getResources(),R.drawable.health_3);
 
-		player = new Player(100, 100, 3, BitmapFactory.decodeResource(getResources(),R.drawable.a), healthImages);
+		player = new Player(100, 100, 3, BitmapFactory.decodeResource(getResources(),R.drawable.player_spritesheet), 12, healthImages);
 		//camera = new Camera(tileGrid.getTiles());
 		//collider = new Collider(player, tileGrid.getTiles());
 		Timer timer = new Timer();
@@ -84,7 +86,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	public void update()
 	{
 		//camera.moveTiles(player.getPlayerSpeed());
-		//player.update();
+		player.update();
 
 		//collider.update();
 	}
