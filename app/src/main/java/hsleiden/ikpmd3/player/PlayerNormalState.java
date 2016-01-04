@@ -1,5 +1,7 @@
 package hsleiden.ikpmd3.player;
 
+import hsleiden.ikpmd3.helpers.Clock;
+
 /**
  * Created by jeroen_van_ottelen on 24-12-15.
  */
@@ -9,6 +11,8 @@ public class PlayerNormalState extends PlayerState
     public PlayerNormalState(Player player)
     {
         super(player);
+
+        player.timer.start();
 
         player.x = player.startX;
         player.y = player.startY;
@@ -25,7 +29,7 @@ public class PlayerNormalState extends PlayerState
 
         if(player.touchInput)
         {
-            player.ySpeed = 10;
+            player.ySpeed += Clock.getDelta() * 5;
         }
 
     }

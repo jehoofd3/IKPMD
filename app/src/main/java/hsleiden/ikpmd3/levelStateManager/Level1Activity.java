@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
-
 import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.background.Background;
@@ -70,8 +69,6 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		player = new Player(100, 100, 3, BitmapFactory.decodeResource(getResources(),R.drawable.player_spritesheet), 12, healthImages);
 		//camera = new Camera(tileGrid.getTiles());
 		//collider = new Collider(player, tileGrid.getTiles());
-		Timer timer = new Timer();
-		timer.start();
 
 		// The scale factors are used to scale the canvas.
 		// This is the mobiles width / the width of the game service.
@@ -128,9 +125,16 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	@Override
 	public boolean onTouchEvent(MotionEvent event)
 	{
-		if (event.getAction() == android.view.MotionEvent.ACTION_DOWN)
-		{
+
+		if(event.getAction()==MotionEvent.ACTION_DOWN){
+
 			player.touchInput = true;
+			return true;
+		}
+		if(event.getAction()==MotionEvent.ACTION_UP)
+		{
+			player.touchInput = false;
+			return true;
 		}
 
 		return super.onTouchEvent(event);

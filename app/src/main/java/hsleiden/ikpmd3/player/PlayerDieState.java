@@ -12,6 +12,9 @@ public class PlayerDieState extends PlayerState
     {
         super(player);
 
+        player.timer.stop();
+        player.timer.reset();
+
         player.health--;
 
         player.ySpeed = 5;
