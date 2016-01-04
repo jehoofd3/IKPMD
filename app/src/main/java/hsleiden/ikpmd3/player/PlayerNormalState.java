@@ -12,9 +12,6 @@ public class PlayerNormalState extends PlayerState
     {
         super(player);
 
-        player.timer.reset();
-        player.timer.start();
-
         player.x = player.startX;
         player.y = player.startY;
         player.ySpeed = 0;

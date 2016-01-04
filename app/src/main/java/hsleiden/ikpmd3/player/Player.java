@@ -1,6 +1,8 @@
 package hsleiden.ikpmd3.player;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+import hsleiden.ikpmd3.animation.Animation;
 import hsleiden.ikpmd3.helpers.Clock;
 import hsleiden.ikpmd3.utility.Configuration;
 
@@ -19,16 +21,17 @@ public class Player
 	public boolean touchInput;
 
 	public PlayerState state;
+	private Animation animation = new Animation();
 
 
-	public Player(int x, int y, int health, Bitmap image, Bitmap[] healthImages)
+	public Player(int x, int y, int health, Bitmap spriteSheet, int numFrames, Bitmap[] healthImages)
 	{
 		this.x = x;
 		this.y = y;
 		this.startX = x;
 		this.startY = y;
 		this.health = health;
-		this.image = image;
+		this.spriteSheet = spriteSheet;
 		this.healthImages = healthImages;
 
 		this.xSpeed = 20;
