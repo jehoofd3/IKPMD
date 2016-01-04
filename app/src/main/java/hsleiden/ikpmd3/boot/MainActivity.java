@@ -18,6 +18,8 @@ import android.view.WindowManager;
 import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.helpers.DatabaseReceiver;
 import hsleiden.ikpmd3.levelStateManager.LevelStateManager;
+import hsleiden.ikpmd3.utility.Configuration;
+import hsleiden.ikpmd3.utility.Utility;
 
 /**
  * This is the activity where all the levels of the game will play.
@@ -40,6 +42,10 @@ public class MainActivity extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		context = getContext();
+
+		// Set the widht and height in the Utility class
+		Utility.GAME_WIDTH = getWindowManager().getDefaultDisplay().getWidth();
+		Utility.GAME_HEIGHT = getWindowManager().getDefaultDisplay().getHeight();
 
 		// Create a database receiver. This makes a database if there isn't one already.
 		DatabaseReceiver.getDatabaseReceiver(this);

@@ -32,8 +32,6 @@ public class ActivityLoop extends Thread
     public ActivityLoop()
     {
         super();
-
-
     }
 
     @Override

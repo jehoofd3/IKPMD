@@ -2,6 +2,9 @@ package hsleiden.ikpmd3.background;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
+
+import hsleiden.ikpmd3.utility.Utility;
 
 /**
  * This class draws a background.
@@ -16,11 +19,11 @@ public class Background
 
 	public Background(Bitmap image)
 	{
-		this.image = image;
+		this.image = Utility.resizedBitmapFull(image);
 	}
 
 	public void draw(Canvas canvas)
 	{
-		canvas.drawBitmap(image , 0 , 0 , null);
+		canvas.drawBitmap(image, 0, 0, null);
 	}
 }

@@ -9,7 +9,6 @@ import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.background.Background;
 import hsleiden.ikpmd3.helpers.Collider;
-import hsleiden.ikpmd3.levelLoader.LevelLoader;
 import hsleiden.ikpmd3.map.TileGrid;
 import hsleiden.ikpmd3.player.Camera;
 import hsleiden.ikpmd3.player.Player;
@@ -77,6 +76,8 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		// This is the mobiles width / the width of the game service.
 		scaleFactorX = getWidth()/(WIDTH * 1.f);
 		scaleFactorY = getHeight()/(HEIGHT * 1.f);
+		System.out.println("scaleFactorX: " + scaleFactorX);
+		System.out.println("scaleFactorY: " + scaleFactorY);
 
 		//we can safely start the game loop
 		activityLoop.setRunning(true);

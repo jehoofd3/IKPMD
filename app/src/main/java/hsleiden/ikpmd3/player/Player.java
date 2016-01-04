@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import hsleiden.ikpmd3.animation.Animation;
 import hsleiden.ikpmd3.helpers.Clock;
 import hsleiden.ikpmd3.utility.Configuration;
+import hsleiden.ikpmd3.utility.Utility;
 
 /**
  *
@@ -43,7 +44,7 @@ public class Player
 
 		for(int i = 0 ; i < image.length ; i++)
 		{
-			image[i] = Bitmap.createBitmap(spriteSheet, 0, i * 256, 256, 256);
+			image[i] = Utility.scaleBitmap(Bitmap.createBitmap(spriteSheet, 0, i * 256, 256, 256));
 		}
 
 		animation.setFrames(image);
@@ -53,7 +54,7 @@ public class Player
 	public void update()
 	{
 		animation.update();
-		state.update();
+		state.update();;
 	}
 
 	public void draw(Canvas canvas)
@@ -62,10 +63,10 @@ public class Player
 
 		if(health >= 1)
 		{
-			canvas.drawBitmap(healthImages[health - 1], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
+			canvas.drawBitmap(healthImages[health - 1], Utility.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
 		} else
 		{
-			canvas.drawBitmap(healthImages[0], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
+			canvas.drawBitmap(healthImages[0], Utility.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
 		}
 
 	}
