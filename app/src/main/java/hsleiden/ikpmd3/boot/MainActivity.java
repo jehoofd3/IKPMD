@@ -51,9 +51,6 @@ public class MainActivity extends Activity {
 
 		// Create a new level state manager that handels the levels.
 		new LevelStateManager(this);
-
-		//View view = new MyView(this);
-		//setContentView(view);
 	}
 
 	@Override
@@ -88,23 +85,4 @@ public class MainActivity extends Activity {
 
 
 }
-
-class MyView extends View
-{
-
-	public MyView(Context context) {
-		super(context);
-
-	}
-
-	@Override
-	protected void onDraw(Canvas canvas) {
-		// TODO Auto-generated method stub
-		super.onDraw(canvas);
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.background), 0, 0, null);
-	}
-
-}
-
-
 

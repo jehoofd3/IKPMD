@@ -24,7 +24,7 @@ public class Player
 	private Animation animation = new Animation();
 
 
-	public Player(int x, int y, int health, Bitmap spriteSheet, int numFrames, Bitmap[] healthImages)
+	public Player(int x, int y, int health, Bitmap spriteSheet, int numFrames, int dimensions, Bitmap[] healthImages)
 	{
 		this.x = x;
 		this.y = y;
@@ -43,7 +43,7 @@ public class Player
 
 		for(int i = 0 ; i < image.length ; i++)
 		{
-			image[i] = Utility.scaleBitmap(Bitmap.createBitmap(spriteSheet, 0, i * 256, 256, 256));
+			image[i] = Utility.scaleBitmap(Bitmap.createBitmap(spriteSheet, 0, i * dimensions, dimensions, dimensions));
 		}
 
 		animation.setFrames(image);

@@ -27,8 +27,6 @@ public class ActivityLoop extends Thread
     private boolean running = false;
     private boolean canvasLocked;
 
-    private Bitmap bitmap;
-
     public ActivityLoop()
     {
         super();
@@ -46,8 +44,6 @@ public class ActivityLoop extends Thread
                     synchronized (this.surfaceHolder) {
                         Clock.update();
 
-
-
                         canvas.save();
                         level.update();
                         level.draw(canvas);
@@ -61,11 +57,6 @@ public class ActivityLoop extends Thread
                 }
             }
         }
-    }
-
-    public void setBitmap(Bitmap bitmap)
-    {
-        this.bitmap = bitmap;
     }
 
     public void setRunning(boolean isRunning)
