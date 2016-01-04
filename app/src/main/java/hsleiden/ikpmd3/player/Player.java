@@ -1,6 +1,8 @@
 package hsleiden.ikpmd3.player;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.helpers.Clock;
 import hsleiden.ikpmd3.utility.Configuration;
 
@@ -17,6 +19,7 @@ public class Player
 	public Bitmap[] healthImages;
 	public float xSpeed, ySpeed;
 	public boolean touchInput;
+	public Timer timer;
 
 	public PlayerState state;
 
@@ -34,26 +37,27 @@ public class Player
 		this.xSpeed = 20;
 		this.ySpeed = 0;
 
+		timer = Timer.getInstance();
+
 		state = new PlayerNormalState(this);
 	}
 
 	public void update()
 	{
 		state.update();
-
-		if(touchInput)
-		{
-			touchInput = false;
-		}
 	}
 
 	public void draw(Canvas canvas)
 	{
 		canvas.drawBitmap(image, x, y, null);
 
-		try {
+		if(health >= 1)
+		{
 			canvas.drawBitmap(healthImages[health - 1], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
-		} catch (ArrayIndexOutOfBoundsException e) {}
+		} else
+		{
+			canvas.drawBitmap(healthImages[0], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
+		}
 	}
 
 	public float getPlayerSpeed()

@@ -7,16 +7,65 @@ import java.util.TimerTask;
  */
 public class Timer
 {
+    private static Timer _instance = null;
 
     private java.util.Timer timer;
-    private TimerTask timerTask;
     private int minutes, seconds, milliSeconds;
 
-    public Timer()
+    private Timer ()
     {
         timer = new java.util.Timer();
+    }
 
-        timerTask = new TimerTask()
+    private synchronized static void createInstance ()
+    {
+        if (_instance == null)
+        {
+            _instance = new Timer ();
+        }
+    }
+
+    public static Timer getInstance ()
+    {
+        if (_instance == null)
+        {
+            createInstance ();
+        }
+
+        return _instance;
+    }
+
+    public void start()
+    {
+        timer.schedule(getTimerTask(), 0, 100);
+    }
+
+    public void stop()
+    {
+        timer.cancel();
+        timer = new java.util.Timer();
+    }
+
+    public void reset()
+    {
+        this.minutes = 0;
+        this.seconds = 0;
+        this.milliSeconds = 0;
+    }
+
+    public int[] getTime()
+    {
+        int[] time = new int[3];
+        time[0] = minutes;
+        time[1] = seconds;
+        time[2] = milliSeconds;
+
+        return time;
+    }
+
+    private TimerTask getTimerTask()
+    {
+        TimerTask timerTask = new TimerTask()
         {
             @Override
             public void run()
@@ -37,32 +86,6 @@ public class Timer
             }
         };
 
-    }
-
-    public void start()
-    {
-        timer.schedule(timerTask, 0, 100);
-    }
-
-    public void stop()
-    {
-        timer.cancel();
-    }
-
-    public void reset()
-    {
-        this.minutes = 0;
-        this.seconds = 0;
-        this.milliSeconds = 0;
-    }
-
-    public int[] getTime()
-    {
-        int[] time = new int[3];
-        time[0] = minutes;
-        time[1] = seconds;
-        time[2] = milliSeconds;
-
-        return time;
+        return timerTask;
     }
 }
