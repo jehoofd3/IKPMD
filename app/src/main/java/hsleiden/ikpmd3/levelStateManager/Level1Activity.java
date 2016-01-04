@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import hsleiden.ikpmd3.R;
+import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.background.Background;
 import hsleiden.ikpmd3.helpers.Collider;
 import hsleiden.ikpmd3.levelLoader.LevelLoader;
@@ -35,6 +36,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 
 	private ActivityLoop activityLoop;
 	private Context context;
+	private Timer timer;
 
 	private Canvas canvas;
 
@@ -68,6 +70,8 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 		player = new Player(100, 100, 3, BitmapFactory.decodeResource(getResources(),R.drawable.a), healthImages);
 		camera = new Camera(tileGrid.getTiles());
 		collider = new Collider(player, tileGrid.getTiles());
+
+		timer = Timer.getInstance();
 
 		// The scale factors are used to scale the canvas.
 		// This is the mobiles width / the width of the game service.
@@ -104,6 +108,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 			background.draw(canvas);
 			tileGrid.draw(canvas);
 			player.draw(canvas);
+			timer.draw(canvas);
 
 			canvas.restoreToCount(savedState);
 		}

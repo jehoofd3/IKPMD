@@ -1,5 +1,9 @@
 package hsleiden.ikpmd3.Timer;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+
 import java.util.TimerTask;
 
 /**
@@ -11,6 +15,8 @@ public class Timer
 
     private java.util.Timer timer;
     private int minutes, seconds, milliSeconds;
+    private Paint paint;
+    private String time;
 
     private Timer ()
     {
@@ -61,6 +67,24 @@ public class Timer
         time[2] = milliSeconds;
 
         return time;
+    }
+
+    public void draw(Canvas canvas)
+    {
+        paint = new Paint();
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(20);
+
+        if(minutes == 0)
+        {
+            time = Integer.toString(seconds) + ":" + Integer.toString(milliSeconds);
+        } else {
+            time = Integer.toString(minutes) + ":" +
+                    Integer.toString(seconds) + ":" +
+                    Integer.toString(milliSeconds);
+        }
+
+        canvas.drawText(time, 10, 25, paint);
     }
 
     private TimerTask getTimerTask()

@@ -12,6 +12,7 @@ public class PlayerNormalState extends PlayerState
     {
         super(player);
 
+        player.timer.reset();
         player.timer.start();
 
         player.x = player.startX;
@@ -29,7 +30,7 @@ public class PlayerNormalState extends PlayerState
 
         if(player.touchInput)
         {
-            player.ySpeed += Clock.getDelta() * 5;
+            player.ySpeed += Clock.delta() * 5;
         }
 
     }

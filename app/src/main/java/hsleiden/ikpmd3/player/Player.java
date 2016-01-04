@@ -58,6 +58,7 @@ public class Player
 		{
 			canvas.drawBitmap(healthImages[0], Configuration.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
 		}
+
 	}
 
 	public float getPlayerSpeed()
