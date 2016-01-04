@@ -1,6 +1,7 @@
 package hsleiden.ikpmd3.player;
 
-import hsleiden.ikpmd3.utility.Configuration;
+
+import hsleiden.ikpmd3.utility.Utility;
 
 /**
  * Created by jeroen_van_ottelen on 28-12-15.
@@ -22,7 +23,7 @@ public class PlayerDieState extends PlayerState
         player.y -= player.ySpeed;
         player.ySpeed -= 0.4;
 
-        if(player.getY() >= Configuration.GAME_HEIGHT)
+        if(player.getY() >= Utility.GAME_HEIGHT)
         {
             player.state = new PlayerNormalState(player);
         }

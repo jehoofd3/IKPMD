@@ -1,10 +1,7 @@
 package hsleiden.ikpmd3.helpers;
 
-import java.util.ArrayList;
-
-import hsleiden.ikpmd3.map.Tile;
 import hsleiden.ikpmd3.player.Player;
-import hsleiden.ikpmd3.utility.Configuration;
+import hsleiden.ikpmd3.utility.Utility;
 
 /**
  * Created by jeroen_van_ottelen on 28-12-15.
@@ -12,19 +9,18 @@ import hsleiden.ikpmd3.utility.Configuration;
 public class Collider
 {
     private Player player;
-    private ArrayList<Tile> tiles;
 
-    public Collider(Player player, ArrayList<Tile> tiles)
+    public Collider(Player player)
     {
         this.player = player;
-        this.tiles = tiles;
     }
 
     public void update()
     {
 
-        if(player.getY() >= Configuration.GAME_HEIGHT ||
-                (player.getY() + Configuration.TILE_HEIGHT) <= 0)
+        // 256 veranderen
+        if(player.getY() >= Utility.GAME_HEIGHT ||
+                (player.getY() + 256) <= 0)
         {
             player.kill();
         }

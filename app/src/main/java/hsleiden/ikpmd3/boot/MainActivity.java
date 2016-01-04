@@ -18,7 +18,6 @@ import android.view.WindowManager;
 import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.helpers.DatabaseReceiver;
 import hsleiden.ikpmd3.levelStateManager.LevelStateManager;
-import hsleiden.ikpmd3.utility.Configuration;
 import hsleiden.ikpmd3.utility.Utility;
 
 /**

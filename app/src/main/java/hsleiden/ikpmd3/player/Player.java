@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 
 import hsleiden.ikpmd3.animation.Animation;
 import hsleiden.ikpmd3.helpers.Clock;
-import hsleiden.ikpmd3.utility.Configuration;
 import hsleiden.ikpmd3.utility.Utility;
 
 /**

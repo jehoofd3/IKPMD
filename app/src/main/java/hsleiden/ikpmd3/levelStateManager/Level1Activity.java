@@ -9,10 +9,8 @@ import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.Timer.Timer;
 import hsleiden.ikpmd3.background.Background;
 import hsleiden.ikpmd3.helpers.Collider;
-import hsleiden.ikpmd3.map.TileGrid;
-import hsleiden.ikpmd3.player.Camera;
 import hsleiden.ikpmd3.player.Player;
-import hsleiden.ikpmd3.utility.Configuration;
+import hsleiden.ikpmd3.utility.Utility;
 
 /**
  *  This class creates and handles level 1 of the game.
@@ -21,16 +19,14 @@ import hsleiden.ikpmd3.utility.Configuration;
 
 public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 {
-	public static final int WIDTH = Configuration.GAME_WIDTH;
-	public static final int HEIGHT = Configuration.GAME_HEIGHT;
+	public static final int WIDTH = Utility.GAME_WIDTH;
+	public static final int HEIGHT = Utility.GAME_HEIGHT;
 
 	private float scaleFactorX;
 	private float scaleFactorY;
 
 	private Background background;
-	private TileGrid tileGrid;
 	private Player player;
-	private Camera camera;
 	private Collider collider;
 
 	private ActivityLoop activityLoop;
@@ -57,18 +53,14 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	{
 		background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background));
 
-		//LevelLoader levelLoader = new LevelLoader(context);
-		//int[][] map = levelLoader.loadLevel("Level1.txt");
-		//tileGrid = new TileGrid(context, WIDTH, map);
-
 		Bitmap[] healthImages = new Bitmap[3];
-		healthImages[0] = BitmapFactory.decodeResource(getResources(),R.drawable.health_1);
-		healthImages[1] = BitmapFactory.decodeResource(getResources(),R.drawable.health_2);
-		healthImages[2] = BitmapFactory.decodeResource(getResources(),R.drawable.health_3);
+		healthImages[0] = Utility.scaleBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.health_1));
+		healthImages[1] = Utility.scaleBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.health_2));
+		healthImages[2] = Utility.scaleBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.health_3));
 
 		player = new Player(100, 100, 3, BitmapFactory.decodeResource(getResources(),R.drawable.player_spritesheet), 12, healthImages);
-		//camera = new Camera(tileGrid.getTiles());
-		//collider = new Collider(player, tileGrid.getTiles());
+//		camera = new Camera(tileGrid.getTiles());
+		collider = new Collider(player);
 
 		timer = Timer.getInstance();
 
@@ -86,10 +78,8 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 
 	public void update()
 	{
-		//camera.moveTiles(player.getPlayerSpeed());
 		player.update();
-
-		//collider.update();
+		collider.update();
 	}
 
 	public void draw(Canvas canvas)
