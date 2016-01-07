@@ -15,6 +15,7 @@ public class Timer
 
     private java.util.Timer timer;
     private int minutes, seconds, milliSeconds;
+    private boolean isDone = false;
     private Paint paint;
     private String time;
 
@@ -69,11 +70,17 @@ public class Timer
         return time;
     }
 
+    public void setTime(int minutes, int seconds)
+    {
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+
     public void draw(Canvas canvas)
     {
         paint = new Paint();
         paint.setColor(Color.BLACK);
-        paint.setTextSize(20);
+        paint.setTextSize(40);
 
         if(minutes == 0)
         {
@@ -84,7 +91,7 @@ public class Timer
                     Integer.toString(milliSeconds);
         }
 
-        canvas.drawText(time, 10, 25, paint);
+        canvas.drawText(time, 10, 40, paint);
     }
 
     private TimerTask getTimerTask()
@@ -94,22 +101,51 @@ public class Timer
             @Override
             public void run()
             {
-                milliSeconds++;
 
-                if(milliSeconds >= 10)
+                if(milliSeconds <= 0)
                 {
-                    seconds++;
-                    milliSeconds = 0;
+                    seconds--;
+                    milliSeconds = 10;
                 }
 
-                if(seconds >= 60)
+                if(seconds <= 0)
                 {
-                    minutes++;
-                    seconds = 0;
+                    minutes--;
+                    seconds = 60;
                 }
+
+                milliSeconds--;
+
+                if(minutes == 0)
+                {
+                    if(seconds == 0)
+                    {
+                        if(milliSeconds == 0)
+                        {
+                            stop();
+                            isDone = true;
+                        }
+                    }
+                }
+
             }
         };
 
         return timerTask;
+    }
+
+    public int getMinutes()
+    {
+        return minutes;
+    }
+
+    public int getSeconds()
+    {
+        return seconds;
+    }
+
+    public int getMilliSeconds()
+    {
+        return milliSeconds;
     }
 }

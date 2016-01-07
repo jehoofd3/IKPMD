@@ -1,6 +1,8 @@
 package hsleiden.ikpmd3.player;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import hsleiden.ikpmd3.animation.Animation;
 import hsleiden.ikpmd3.helpers.Clock;
@@ -15,50 +17,56 @@ public class Player
 {
 
 	public int x, y, startX, startY, health;
-	public Bitmap spriteSheet;
 	public Bitmap[] healthImages;
 	public float xSpeed, ySpeed;
 	public boolean touchInput;
+	private int imageWidth;
+	private int imageHeight;
+
+	public boolean canShoot;
+	private int numberOfBullets = 30;
 
 	public PlayerState state;
-	private Animation animation = new Animation();
+	private Collider collider;
 
+	private Paint paint;
 
-	public Player(int x, int y, int health, Bitmap spriteSheet, int numFrames, int dimensions, Bitmap[] healthImages)
+	private BulletHandeler bulletHandeler = new BulletHandeler();
+
+	public Player(int x, int y, int health, int imageWidth, int imageHeight, Bitmap[] healthImages)
 	{
 		this.x = x;
 		this.y = y;
 		this.startX = x;
 		this.startY = y;
 		this.health = health;
-		this.spriteSheet = spriteSheet;
 		this.healthImages = healthImages;
 
-		this.xSpeed = 20;
+		this.imageWidth = imageWidth;
+		this.imageHeight = imageHeight;
+
 		this.ySpeed = 0;
+
+		collider = new Collider(this);
 
 		state = new PlayerNormalState(this);
 
-		Bitmap[] image = new Bitmap[numFrames];
-
-		for(int i = 0 ; i < image.length ; i++)
-		{
-			image[i] = Utility.scaleBitmap(Bitmap.createBitmap(spriteSheet, 0, i * dimensions, dimensions, dimensions));
-		}
-
-		animation.setFrames(image);
-		animation.setDelay(60);
+		paint = new Paint();
+		paint.setColor(Color.WHITE);
+		paint.setTextSize(40);
 	}
 
 	public void update()
 	{
-		animation.update();
-		state.update();;
+		state.update();
+		collider.update(x, y);
+		bulletHandeler.update();
 	}
 
 	public void draw(Canvas canvas)
 	{
-		canvas.drawBitmap(animation.getImage(), x, y, null);
+		state.draw(canvas);
+		bulletHandeler.draw(canvas);
 
 		if(health >= 1)
 		{
@@ -68,16 +76,14 @@ public class Player
 			canvas.drawBitmap(healthImages[0], Utility.GAME_WIDTH - healthImages[0].getWidth(), 0, null);
 		}
 
-	}
 
-	public float getPlayerSpeed()
-	{
-		xSpeed = Clock.delta() * 5;
-		return xSpeed;
+		canvas.drawText("Bullets: " + numberOfBullets, Utility.GAME_WIDTH - 220, Utility.GAME_HEIGHT - 10, paint);
+
 	}
 
 	public void kill()
 	{
+
 		if(!(state instanceof PlayerDieState))
 		{
 			state = new PlayerDieState(this);
@@ -92,5 +98,30 @@ public class Player
 	public int getY()
 	{
 		return this.y;
+	}
+
+	public int getImageHeight()
+	{
+		return imageHeight;
+	}
+
+	public int getImageWidth()
+	{
+		return imageWidth;
+	}
+
+	public BulletHandeler getBulletHandeler()
+	{
+		return bulletHandeler;
+	}
+
+	public int getNumberOfBullets()
+	{
+		return numberOfBullets;
+	}
+
+	public void setNumberOfBullets(int numberOfBullets)
+	{
+		this.numberOfBullets = numberOfBullets;
 	}
 }

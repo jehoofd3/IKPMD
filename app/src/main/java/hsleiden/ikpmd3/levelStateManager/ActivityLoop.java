@@ -44,10 +44,13 @@ public class ActivityLoop extends Thread
                     synchronized (this.surfaceHolder) {
                         Clock.update();
 
-                        canvas.save();
-                        level.update();
-                        level.draw(canvas);
-                        canvas.restore();
+                        if(canvas != null)
+                        {
+                            canvas.save();
+                            level.update();
+                            level.draw(canvas);
+                            canvas.restore();
+                        }
                     }
                 }
             } finally {

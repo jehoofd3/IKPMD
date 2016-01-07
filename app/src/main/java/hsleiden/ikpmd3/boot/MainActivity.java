@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 		//set to full screen
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		context = getContext();
+		context = getApplicationContext();
 
 		// Set the widht and height in the Utility class
 		Utility.GAME_WIDTH = getWindowManager().getDefaultDisplay().getWidth();

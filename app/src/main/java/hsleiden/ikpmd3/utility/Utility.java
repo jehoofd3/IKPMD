@@ -63,4 +63,15 @@ public class Utility
         return resizedBitmap;
     }
 
+    public static Bitmap[] getBitmapArrayFromSpriteSheet(int numFrames, Bitmap spriteSheet, int imageWidth, int imageHeight)
+    {
+        Bitmap[] frames = new Bitmap[numFrames];
+
+        for(int i = 0 ; i < frames.length ; i++)
+        {
+            frames[i] = scaleBitmap(Bitmap.createBitmap(spriteSheet, 0, i * imageHeight, imageWidth, imageHeight));
+        }
+
+        return frames;
+    }
 }

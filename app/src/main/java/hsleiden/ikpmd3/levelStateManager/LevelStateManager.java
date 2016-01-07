@@ -1,5 +1,7 @@
 package hsleiden.ikpmd3.levelStateManager;
 
+import android.graphics.PixelFormat;
+
 import hsleiden.ikpmd3.boot.MainActivity;
 
 /**
@@ -31,6 +33,7 @@ public class LevelStateManager
 	public void runLevel()
 	{
 		level.setActivityLoop(activityLoop);
+		level.getHolder().setFormat(PixelFormat.TRANSPARENT);
 		mainActivity.setContentView(level);
 		activityLoop.setSurfaceHolder(level.getHolder());
 		activityLoop.setLevel(level);
