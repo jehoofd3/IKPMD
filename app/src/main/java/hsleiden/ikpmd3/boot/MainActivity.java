@@ -2,19 +2,11 @@ package hsleiden.ikpmd3.boot;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.os.Bundle;
-import android.os.Debug;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import hsleiden.ikpmd3.R;
 import hsleiden.ikpmd3.helpers.DatabaseReceiver;
 import hsleiden.ikpmd3.levelStateManager.LevelStateManager;

@@ -23,7 +23,7 @@ public class LevelStateManager
     {
 		this.mainActivity = mainActivity;
 		activityLoop = new ActivityLoop();
-		setLevel(new Level1Activity(mainActivity));
+		setLevel(new Level1Activity(mainActivity, this));
 		runLevel();
     }
 

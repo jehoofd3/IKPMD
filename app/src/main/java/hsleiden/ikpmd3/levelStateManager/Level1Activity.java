@@ -3,7 +3,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.PixelFormat;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -29,17 +28,21 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	private Player player;
 
 	private ActivityLoop activityLoop;
+	private LevelStateManager levelStateManager;
+	private Context context;
 	private Timer timer;
-
+	
 	private RocketHandeler rocketHandeler;
 
 	private int timeNextRocket = 1800;
 	private int rocketSpeed = 10;
 	private int rocketSpeedAfterMinute = 19;
 
-	public Level1Activity(Context context)
+	public Level1Activity(Context context, LevelStateManager levelStateManager)
 	{
 		super(context);
+		this.context = context;
+		this.levelStateManager = levelStateManager;
 
 		getHolder().addCallback(this);
 
@@ -50,7 +53,7 @@ public class Level1Activity extends LevelState implements SurfaceHolder.Callback
 	@Override
 	public void surfaceCreated(SurfaceHolder holder)
 	{
-		background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background2));
+		background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background));
 
 		Bitmap[] healthImages = new Bitmap[3];
 		healthImages[0] = Utility.scaleBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.health_1));
